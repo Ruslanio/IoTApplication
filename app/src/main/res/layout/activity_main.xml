@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+    <TextView
+            style="@style/Label"
+            android:padding="@dimen/medium_value"
+            android:text="@string/on_off_sensors"
+            android:id="@+id/tvOnOff"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="8dp"/>
+
+
+    <TextView
+            style="@style/Label.Accent"
+            android:id="@+id/tvLaser"
+            android:text="@string/laser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnLaser"/>
+
+    <TextView
+            style="@style/Label.Accent"
+            android:id="@+id/tvBuzzer"
+            android:text="@string/buzzer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnBuzzer"/>
+
+    <Button
+            style="@style/Button"
+
+            android:text="@string/on"
+            android:id="@+id/btnLaser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/tvOnOff" android:layout_marginTop="8dp"
+    />
+
+    <androidx.constraintlayout.widget.Guideline
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/guideline"
+            app:layout_constraintGuide_begin="300dp"
+            android:orientation="vertical"/>
+
+    <Button
+            style="@style/Button"
+            android:text="@string/on"
+            android:id="@+id/btnBuzzer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/guideline"
+            android:layout_marginStart="8dp" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="@+id/guideline2"
+    />
+
+
+    <include android:id="@+id/div" layout="@layout/divider"
+             app:layout_constraintStart_toStartOf="parent"
+             android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.0"
+             android:layout_height="@dimen/divider_height"
+             android:layout_width="match_parent" app:layout_constraintTop_toBottomOf="@+id/btnBuzzer"
+             android:layout_marginTop="8dp"/>
+
+    <include android:id="@+id/div2" layout="@layout/divider"
+             app:layout_constraintStart_toStartOf="parent"
+             android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.0"
+             android:layout_height="@dimen/divider_height"
+             android:layout_width="match_parent"
+             app:layout_constraintTop_toBottomOf="@+id/btnBuzzerPer" android:layout_marginTop="8dp"/>
+    <include android:id="@+id/div3" layout="@layout/divider"
+             app:layout_constraintStart_toStartOf="parent"
+             android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintHorizontal_bias="0.0"
+             android:layout_height="@dimen/divider_height"
+             android:layout_width="match_parent"
+             app:layout_constraintTop_toBottomOf="@+id/ivCollisionStatus" android:layout_marginTop="8dp"/>
+    <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                                android:id="@+id/guideline2" app:layout_constraintGuide_begin="100dp"
+                                                android:orientation="horizontal"
+    />
+
+    <TextView
+            style="@style/Label"
+            android:gravity="center"
+            android:padding="@dimen/medium_value"
+            android:text="@string/periodic_enable"
+            android:id="@+id/tvOnOffPer"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/div" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"/>
+
+    <TextView android:id="@+id/tvPeriodic"
+              style="@style/Label.Secondary"
+              android:text="@string/dont_care" android:layout_width="wrap_content" android:layout_height="wrap_content"
+              app:layout_constraintStart_toStartOf="parent"
+              android:layout_marginStart="16dp" app:layout_constraintBaseline_toBaselineOf="@+id/edPer"/>
+    <EditText
+            android:id="@+id/edPer"
+            android:inputType="number"
+            android:textSize="@dimen/text_size_medium"
+            android:textColor="@color/primary"
+            android:hint="@string/sec"
+            android:layout_width="0dp" android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@+id/tvPeriodic" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tvOnOffPer"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+
+
+    <TextView
+            android:id="@+id/tvLaserPer"
+            android:text="@string/laser"
+            style="@style/Label.Accent"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBaseline_toBaselineOf="@+id/btnLaserPer"/>
+    <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
+                                                android:id="@+id/guideline3" app:layout_constraintGuide_begin="340dp"
+                                                android:orientation="horizontal"/>
+
+
+    <TextView
+            style="@style/Label.Accent"
+            android:id="@+id/tvBuzzerPer"
+            android:text="@string/buzzer" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnBuzzerPer"/>
+
+    <Button style="@style/Button"
+            android:id="@+id/btnLaserPer"
+            android:text="@string/on"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toTopOf="@+id/guideline3"/>
+
+    <Button
+            style="@style/Button"
+            android:id="@+id/btnBuzzerPer"
+            android:text="@string/on" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/guideline3"
+            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline"/>
+
+
+    <TextView android:id="@+id/tvCollisionStatus"
+              style="@style/Label"
+              android:text="@string/collision_sensor_status" android:layout_width="wrap_content"
+              android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/div2"
+              app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+              android:layout_marginTop="8dp"
+              android:layout_marginBottom="8dp"
+              app:layout_constraintBottom_toTopOf="@+id/div3"/>
+
+    <ImageView android:src="@drawable/ic_no_signal" android:id="@+id/ivCollisionStatus"
+               android:layout_width="wrap_content" android:layout_height="wrap_content"
+               app:layout_constraintTop_toBottomOf="@+id/div2" app:layout_constraintEnd_toEndOf="parent"
+               android:layout_marginEnd="8dp"
+               android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="@+id/guideline"
+    />
+
+    <TextView
+            style="@style/Label"
+            android:id="@+id/tvEnableByColl" android:text="@string/asd" android:layout_width="0dp"
+            android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/div3"
+            app:layout_constraintEnd_toStartOf="@+id/guideline"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp" android:layout_marginEnd="8dp"/>
+
+    <Button android:id="@+id/btnByColl" style="@style/Button" android:text="@string/on"
+            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline" app:layout_constraintTop_toBottomOf="@+id/div3"
+            android:layout_marginTop="8dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">IoTApplication</string>
+    <string name="on_off_sensors">Вкл/Выкл датчики</string>
+    <string name="laser">Лазер</string>
+    <string name="buzzer">Баззер</string>
+    <string name="on">Вкл</string>
+    <string name="off">Выкл</string>
+    <string name="periodic_enable">Переодическое включение</string>
+    <string name="dont_care">Длительность работы в сек. (не больше 10)</string>
+    <string name="sec">сек.</string>
+    <string name="collision_sensor_status">Состоание датчика пересечения</string>
+    <string name="asd">Вкл/Выкл работу датчиков при страбатывании датчика пересечения</string>
+</resources>
