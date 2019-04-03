@@ -34,4 +34,9 @@
     <style name="Label.Accent">
         <item name="android:textSize">@dimen/text_size_large</item>
     </style>
+
+    <style name="Label.Logo">
+        <item name="android:textSize">70sp</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
 </resources>
