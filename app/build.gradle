@@ -59,4 +59,9 @@ dependencies {
     //Design
     implementation "com.google.android.material:material:1.1.0-alpha04"
     implementation "androidx.recyclerview:recyclerview:1.1.0-alpha03"
+
+    //MQTT
+    implementation('org.eclipse.paho:org.eclipse.paho.android.service:1.0.2') {
+        exclude module: 'support-v4'
+    }
 }

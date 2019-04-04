@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.iotapplication.mqtt.MqttManager
+import com.example.iotapplication.mqtt.callback.TestCallBack
 import com.example.iotapplication.util.ButtonType
 import com.example.iotapplication.util.OFF
 import com.example.iotapplication.util.ON
@@ -23,13 +25,21 @@ class MainActivity : AppCompatActivity() {
     private val buttons = HashMap<ButtonType, Button>()
     private var seconds = 0
     private var isPressed = false
-    private val mqttManager = MqttManager()
+    private val testCallBack = TestCallBack { topic, message ->
+        when(message?.payload.toString()){
+            "0" -> ivCollisionStatus.setImageResource(R.drawable.ic_no_signal)
+            "1"-> ivCollisionStatus.setImageResource(R.drawable.ic_working)
+            else -> showToast("Unknown payload")
+        }
+    }
+    private var mqttManager : MqttManager? = null
 
     @SuppressLint("CheckResult")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        mqttManager = MqttManager(applicationContext,testCallBack)
         edPer
             .textChanges()
             .delay(300, TimeUnit.MILLISECONDS)
@@ -47,12 +57,12 @@ class MainActivity : AppCompatActivity() {
         btnLaser.setOnClickListener {
             if (isPressed){
                 enableAll()
-                mqttManager.onLaser(State.OFF)
+                mqttManager?.onLaser(State.OFF)
                 (it as Button).ON(this)
                 isPressed = false
             } else {
                 disableUnusedButtons(ButtonType.LASER)
-                mqttManager.onLaser(State.ON)
+                mqttManager?.onLaser(State.ON)
                 (it as Button).OFF(this)
                 isPressed = true
             }
@@ -62,12 +72,12 @@ class MainActivity : AppCompatActivity() {
         btnBuzzer.setOnClickListener {
             if (isPressed){
                 enableAll()
-                mqttManager.onBuzzer(State.OFF)
+                mqttManager?.onBuzzer(State.OFF)
                 (it as Button).ON(this)
                 isPressed = false
             } else {
                 disableUnusedButtons(ButtonType.BUZZER)
-                mqttManager.onBuzzer(State.ON)
+                mqttManager?.onBuzzer(State.ON)
                 (it as Button).OFF(this)
                 isPressed = true
             }
@@ -76,12 +86,12 @@ class MainActivity : AppCompatActivity() {
         btnLaserPer.setOnClickListener {
             if (isPressed){
                 enableAll()
-                mqttManager.onLaserPer(seconds)
+                mqttManager?.onLaserPer(seconds)
                 (it as Button).ON(this)
                 isPressed = false
             } else {
                 disableUnusedButtons(ButtonType.LASER_PER)
-                mqttManager.onLaserPer(seconds)
+                mqttManager?.onLaserPer(seconds)
                 (it as Button).OFF(this)
                 isPressed = true
             }
@@ -90,12 +100,12 @@ class MainActivity : AppCompatActivity() {
         btnBuzzerPer.setOnClickListener {
             if (isPressed){
                 enableAll()
-                mqttManager.onBuzzerPer(seconds)
+                mqttManager?.onBuzzerPer(seconds)
                 (it as Button).ON(this)
                 isPressed = false
             } else {
                 disableUnusedButtons(ButtonType.BUZZER_PER)
-                mqttManager.onBuzzerPer(seconds)
+                mqttManager?.onBuzzerPer(seconds)
                 (it as Button).OFF(this)
                 isPressed = true
             }
@@ -104,12 +114,12 @@ class MainActivity : AppCompatActivity() {
         btnByColl.setOnClickListener {
             if (isPressed){
                 enableAll()
-                mqttManager.onCollision(State.OFF)
+                mqttManager?.onCollision(State.OFF)
                 (it as Button).ON(this)
                 isPressed = false
             } else {
                 disableUnusedButtons(ButtonType.COLLISION)
-                mqttManager.onCollision(State.ON)
+                mqttManager?.onCollision(State.ON)
                 (it as Button).OFF(this)
                 isPressed = true
             }
@@ -143,5 +153,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun showToast(s: String) {
         Toast.makeText(this, s, Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mqttManager?.close()
     }
 }

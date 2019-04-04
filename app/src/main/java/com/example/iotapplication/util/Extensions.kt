@@ -17,10 +17,3 @@ fun Button.OFF(context: Context) {
     this.setText(R.string.off)
 }
 
-enum class ButtonType() {
-    LASER, LASER_PER, BUZZER, BUZZER_PER, COLLISION
-}
-
-enum class State(state : Int){
-    ON(1), OFF(0)
-}
