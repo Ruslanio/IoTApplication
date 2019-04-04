@@ -1,16 +1,15 @@
 package com.example.iotapplication.test
 
-import org.eclipse.paho.client.mqttv3.MqttClient
-import org.eclipse.paho.client.mqttv3.MqttMessage
+import org.eclipse.paho.client.mqttv3.*
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence
 
-class TestPublisher {
+class TestPublisher(private val cl : IMqttActionListener) {
     private val client =
         MqttClient("tcp://broker.mqttdashboard.com:1883", MqttClient.generateClientId(), MemoryPersistence())
     private val topic = "itis/test"
 
     fun connect() {
-        client.connect()
+        client.connectWithResult(MqttConnectOptions()).actionCallback = cl
     }
 
     fun disconnect() {
@@ -23,9 +22,19 @@ class TestPublisher {
     }
 }
 
+val conLis  = object : IMqttActionListener{
+    override fun onSuccess(asyncActionToken: IMqttToken?) {
+        println("CONNECTED!")
+    }
+
+    override fun onFailure(asyncActionToken: IMqttToken?, exception: Throwable?) {
+        println("CONNECTION FAILED!")
+    }
+}
+
 
 fun main(args: Array<String>) {
-    val pub = TestPublisher()
+    val pub = TestPublisher(conLis)
     pub.connect()
     println("Connected")
     while (true){
