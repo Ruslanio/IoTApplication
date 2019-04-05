@@ -10,4 +10,6 @@
     <string name="sec">сек.</string>
     <string name="collision_sensor_status">Состоание датчика пересечения</string>
     <string name="asd">Вкл/Выкл работу датчиков при страбатывании датчика пересечения</string>
+    <string name="connected">Connected</string>
+    <string name="not_connected">Not Connected</string>
 </resources>

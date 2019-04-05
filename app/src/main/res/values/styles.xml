@@ -39,4 +39,9 @@
         <item name="android:textSize">70sp</item>
         <item name="android:textColor">#FFFFFF</item>
     </style>
+
+    <style name="Label.Headline">
+        <item name="android:textSize">40sp</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
 </resources>

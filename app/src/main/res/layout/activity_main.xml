@@ -1,196 +1,147 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.core.widget.NestedScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
 
-    <TextView
-            style="@style/Label"
-            android:padding="@dimen/medium_value"
-            android:text="@string/on_off_sensors"
-            android:id="@+id/tvOnOff"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="8dp"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent">
+        <ImageView
+                android:id="@+id/ivSensor"
+                android:src="@drawable/ic_joystick"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="32dp"/>
+
+        <TextView
+                style="@style/Label.Headline"
+                android:fontFamily="@font/typeface"
+                android:id="@+id/tvSensor"
+                android:gravity="center"
+                android:text="Seonsor status" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/ivSensor"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+
+        <include layout="@layout/divider" android:layout_width="match_parent"
+                 android:layout_height="@dimen/divider_height"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                 android:layout_marginStart="8dp"
+                 android:id="@+id/include" app:layout_constraintTop_toBottomOf="@+id/tvSensor"
+                 android:layout_marginTop="8dp"/>
 
 
-    <TextView
-            style="@style/Label.Accent"
-            android:id="@+id/tvLaser"
-            android:text="@string/laser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnLaser"/>
+        <ImageView android:id="@+id/ivRotClock" android:src="@drawable/ic_back_dis" android:layout_width="wrap_content"
+                   android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/include"
+                   app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                   android:layout_marginTop="16dp" app:layout_constraintEnd_toStartOf="@+id/icBtn"
+                   android:layout_marginEnd="8dp"/>
 
-    <TextView
-            style="@style/Label.Accent"
-            android:id="@+id/tvBuzzer"
-            android:text="@string/buzzer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="16dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnBuzzer"/>
+        <ImageView
+                android:src="@drawable/ic_next_dis"
+                android:id="@+id/ivRotAntiClock" android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/include" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp" android:layout_marginTop="16dp"
+                app:layout_constraintStart_toEndOf="@+id/icBtn" android:layout_marginStart="8dp"/>
 
-    <Button
-            style="@style/Button"
+        <ImageView
+                android:id="@+id/icBtn"
+                android:src="@drawable/ic_charge_dis" android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/include"
+                android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="8dp"/>
 
-            android:text="@string/on"
-            android:id="@+id/btnLaser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            android:layout_marginStart="8dp" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline2"
-            app:layout_constraintTop_toBottomOf="@+id/tvOnOff" android:layout_marginTop="8dp"
-    />
+        <include layout="@layout/divider" android:layout_width="match_parent"
+                 android:layout_height="@dimen/divider_height"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                 android:layout_marginStart="8dp"
+                 android:id="@+id/include1"
+                 android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/icBtn"/>
 
-    <androidx.constraintlayout.widget.Guideline
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/guideline"
-            app:layout_constraintGuide_begin="300dp"
-            android:orientation="vertical"/>
-
-    <Button
-            style="@style/Button"
-            android:text="@string/on"
-            android:id="@+id/btnBuzzer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/guideline"
-            android:layout_marginStart="8dp" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toTopOf="@+id/guideline2"
-    />
+        <ImageView
+                android:id="@+id/ivLaser"
+                android:src="@drawable/ic_business_dis"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/include1" android:layout_marginTop="16dp"
+                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/ivBuzzer"
+                android:layout_marginEnd="32dp"/>
 
 
-    <include android:id="@+id/div" layout="@layout/divider"
-             app:layout_constraintStart_toStartOf="parent"
-             android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintHorizontal_bias="0.0"
-             android:layout_height="@dimen/divider_height"
-             android:layout_width="match_parent" app:layout_constraintTop_toBottomOf="@+id/btnBuzzer"
-             android:layout_marginTop="8dp"/>
+        <ImageView
+                android:id="@+id/ivBuzzer"
+                android:src="@drawable/ic_trumpet_dis"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/include1" android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintStart_toEndOf="@+id/ivLaser" app:layout_constraintHorizontal_bias="0.5"/>
 
-    <include android:id="@+id/div2" layout="@layout/divider"
-             app:layout_constraintStart_toStartOf="parent"
-             android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintHorizontal_bias="0.0"
-             android:layout_height="@dimen/divider_height"
-             android:layout_width="match_parent"
-             app:layout_constraintTop_toBottomOf="@+id/btnBuzzerPer" android:layout_marginTop="8dp"/>
-    <include android:id="@+id/div3" layout="@layout/divider"
-             app:layout_constraintStart_toStartOf="parent"
-             android:layout_marginStart="8dp" android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintHorizontal_bias="0.0"
-             android:layout_height="@dimen/divider_height"
-             android:layout_width="match_parent"
-             app:layout_constraintTop_toBottomOf="@+id/ivCollisionStatus" android:layout_marginTop="8dp"/>
-    <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                                android:id="@+id/guideline2" app:layout_constraintGuide_begin="100dp"
-                                                android:orientation="horizontal"
-    />
+        <TextView
+                style="@style/Label.Headline"
+                android:fontFamily="@font/typeface"
+                android:id="@+id/tvLaser"
+                android:text="Laser"
+                android:gravity="center"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/ivLaser" app:layout_constraintStart_toStartOf="@+id/ivLaser"
+                app:layout_constraintTop_toBottomOf="@+id/ivLaser" android:layout_marginTop="8dp"/>
+        <TextView
+                style="@style/Label.Headline"
+                android:fontFamily="@font/typeface"
+                android:id="@+id/tvBuzzer"
+                android:text="Buzzer"
+                android:gravity="center"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/ivBuzzer"
+                app:layout_constraintStart_toStartOf="@+id/ivBuzzer" app:layout_constraintEnd_toEndOf="@+id/ivBuzzer"/>
 
-    <TextView
-            style="@style/Label"
-            android:gravity="center"
-            android:padding="@dimen/medium_value"
-            android:text="@string/periodic_enable"
-            android:id="@+id/tvOnOffPer"
-            android:layout_width="match_parent" android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/div" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"/>
-
-    <TextView android:id="@+id/tvPeriodic"
-              style="@style/Label.Secondary"
-              android:text="@string/dont_care" android:layout_width="wrap_content" android:layout_height="wrap_content"
-              app:layout_constraintStart_toStartOf="parent"
-              android:layout_marginStart="16dp" app:layout_constraintBaseline_toBaselineOf="@+id/edPer"/>
-    <EditText
-            android:id="@+id/edPer"
-            android:inputType="number"
-            android:textSize="@dimen/text_size_medium"
-            android:textColor="@color/primary"
-            android:hint="@string/sec"
-            android:layout_width="0dp" android:layout_height="wrap_content"
-            app:layout_constraintStart_toEndOf="@+id/tvPeriodic" android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/tvOnOffPer"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
+        <include layout="@layout/divider" android:layout_width="match_parent"
+                 android:layout_height="@dimen/divider_height"
+                 app:layout_constraintStart_toStartOf="parent"
+                 app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                 android:layout_marginStart="8dp"
+                 android:id="@+id/include2"
+                 android:layout_marginTop="16dp" app:layout_constraintTop_toBottomOf="@+id/tvLaser"/>
 
 
-    <TextView
-            android:id="@+id/tvLaserPer"
-            android:text="@string/laser"
-            style="@style/Label.Accent"
-            android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBaseline_toBaselineOf="@+id/btnLaserPer"/>
-    <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                                android:id="@+id/guideline3" app:layout_constraintGuide_begin="340dp"
-                                                android:orientation="horizontal"/>
+        <ImageView
+                android:src="@drawable/ic_satellite_dis"
+                android:id="@+id/ivConnection" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@+id/include2"
+                android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/tvIsConnected"
+                android:layout_marginBottom="32dp" app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread" android:layout_marginStart="16dp"/>
 
+        <TextView
+                style="@style/Label.Headline"
+                android:fontFamily="@font/typeface"
+                android:id="@+id/tvIsConnected"
+                android:text="@string/connected"
+                android:gravity="center"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/ivConnection"
+                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toStartOf="@+id/btnReconnect"
+                app:layout_constraintTop_toTopOf="@+id/ivConnection"
+                app:layout_constraintBottom_toBottomOf="@+id/ivConnection"/>
 
-    <TextView
-            style="@style/Label.Accent"
-            android:id="@+id/tvBuzzerPer"
-            android:text="@string/buzzer" android:layout_width="wrap_content" android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            app:layout_constraintBaseline_toBaselineOf="@+id/btnBuzzerPer"/>
-
-    <Button style="@style/Button"
-            android:id="@+id/btnLaserPer"
-            android:text="@string/on"
-            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline" android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/guideline3"/>
-
-    <Button
-            style="@style/Button"
-            android:id="@+id/btnBuzzerPer"
-            android:text="@string/on" android:layout_width="wrap_content" android:layout_height="wrap_content"
-            android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="@+id/guideline3"
-            android:layout_marginStart="8dp" app:layout_constraintStart_toStartOf="@+id/guideline"/>
-
-
-    <TextView android:id="@+id/tvCollisionStatus"
-              style="@style/Label"
-              android:text="@string/collision_sensor_status" android:layout_width="wrap_content"
-              android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/div2"
-              app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-              android:layout_marginTop="8dp"
-              android:layout_marginBottom="8dp"
-              app:layout_constraintBottom_toTopOf="@+id/div3"/>
-
-    <ImageView android:src="@drawable/ic_no_signal" android:id="@+id/ivCollisionStatus"
-               android:layout_width="wrap_content" android:layout_height="wrap_content"
-               app:layout_constraintTop_toBottomOf="@+id/div2" app:layout_constraintEnd_toEndOf="parent"
-               android:layout_marginEnd="8dp"
-               android:layout_marginTop="8dp" app:layout_constraintStart_toStartOf="@+id/guideline"
-    />
-
-    <TextView
-            style="@style/Label"
-            android:id="@+id/tvEnableByColl" android:text="@string/asd" android:layout_width="0dp"
-            android:layout_height="wrap_content" app:layout_constraintTop_toBottomOf="@+id/div3"
-            app:layout_constraintEnd_toStartOf="@+id/guideline"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp" android:layout_marginEnd="8dp"/>
-
-    <Button android:id="@+id/btnByColl" style="@style/Button" android:text="@string/on"
-            android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline" app:layout_constraintTop_toBottomOf="@+id/div3"
-            android:layout_marginTop="8dp"/>
-
-    <Button
-            android:visibility="gone"
-            android:id="@+id/btnTest" android:text="TEST" android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:layout_marginTop="24dp"
-            app:layout_constraintTop_toBottomOf="@+id/tvEnableByColl" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <ImageButton
+                android:id="@+id/btnReconnect"
+                style="@style/Button.Flat"
+                android:src="@drawable/ic_time_left_dis"
+                android:layout_width="wrap_content" android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/tvIsConnected"
+                app:layout_constraintHorizontal_bias="0.5" app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvIsConnected"
+                app:layout_constraintBottom_toBottomOf="@+id/tvIsConnected" android:layout_marginEnd="16dp"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
