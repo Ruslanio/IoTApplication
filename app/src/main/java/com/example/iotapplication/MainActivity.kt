@@ -1,8 +1,11 @@
 package com.example.iotapplication
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.os.Handler
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.iotapplication.mqtt.HiveMqClient
@@ -25,6 +28,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
 
         val callback = MainCallback(this::onMessage, this::onError, this::onConnectionLost)
         hiveMqClient = HiveMqClient(this, this::onConnected, callback)
@@ -56,6 +60,7 @@ class MainActivity : AppCompatActivity() {
 
         btnReconnect.setOnClickListener {
             hiveMqClient?.connect()
+            showProgress(true)
         }
     }
 
@@ -66,6 +71,8 @@ class MainActivity : AppCompatActivity() {
     private fun onError(e: Throwable?) {
         e?.printStackTrace()
         showToast("Some error!")
+        showProgress(false)
+
     }
 
     private fun onConnected(e: Throwable?) {
@@ -75,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             btnReconnect.isEnabled = false
             tvIsConnected.text = resources.getText(R.string.connected)
             showToast("Connected")
+            showProgress(false)
         }
     }
 
@@ -108,6 +116,18 @@ class MainActivity : AppCompatActivity() {
                     icBtn.setImageResource(R.drawable.ic_charge_dis)
                 }, TIMER)
             }
+        }
+    }
+
+    private fun showProgress(progress : Boolean){
+        if (progress){
+            mainContainer.visibility = View.GONE
+            pgConnecting.visibility = View.VISIBLE
+            tvConnecting.visibility = View.VISIBLE
+        } else {
+            mainContainer.visibility = View.VISIBLE
+            pgConnecting.visibility = View.GONE
+            tvConnecting.visibility = View.GONE
         }
     }
 
